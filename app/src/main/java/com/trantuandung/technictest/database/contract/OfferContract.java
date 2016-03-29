@@ -17,7 +17,9 @@ public class OfferContract implements BaseColumns{
     public static final String SORT_ORDER_SLICE_VALUE = COL_SLICE_VALUE + " ASC, " + "lower(" + COL_TYPE + ") ASC";
 
     public static final String TABLE_NAME = DBTable.OFFER.getValue();
+
     public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + ProviderInfos.AUTHORITY + "." + TABLE_NAME;
+
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
             + _ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "

@@ -22,8 +22,15 @@ import java.io.Serializable;
 public enum DBUri implements Serializable {
     //  /# > integer,  /* > string
     // fichiers de config generaus
-    ALL_BOOK(100, false, DBTable.BOOK, "", ""),
-    BOOK_BY_ID(101, true, DBTable.BOOK, "bookid", "/*");
+    ALL_BOOK(100, DBTable.BOOK, "", ""),
+    BOOK_BY_ID(101, DBTable.BOOK, "book.id", "/*"),
+    BOOK_BY_TITLE(102, DBTable.BOOK, "book.title", "/*"),
+    BOOK_BY_PRICE(103, DBTable.BOOK, "book.title", "/#"),
+
+    ALL_OFFER(200, DBTable.OFFER, "", ""),
+    ALL_OFFER_BY_BOOK_ID(201, DBTable.OFFER, "offer.bookid", "/*"),
+    ALL_OFFER_BY_TYPE(202, DBTable.OFFER, "offer.type", "/*"),
+    ALL_OFFER_BY_VALUE(202, DBTable.OFFER, "offer.value", "/#");
 
     public static final UriMatcher MATCHER = new UriMatcher(UriMatcher.NO_MATCH);
     private static SparseArray<DBTable> mapIntTable = new SparseArray<DBTable>();
@@ -40,16 +47,14 @@ public enum DBUri implements Serializable {
         }
     }
 
-    private final boolean needLogin;
     private final String queryby;
     private final String suffix;
     private final DBTable table;
     // INT VALUES FOR URIMATCHER
     private final int value;
 
-    DBUri(int value, boolean needLogin, DBTable table, String suffix, String queryby) {
+    DBUri(int value, DBTable table, String suffix, String queryby) {
         this.value = value;
-        this.needLogin = needLogin;
         this.table = table;
         this.suffix = suffix;
         this.queryby = queryby;
@@ -72,9 +77,6 @@ public enum DBUri implements Serializable {
         return this.value;
     }
 
-    public boolean getNeedLogin() {
-        return this.needLogin;
-    }
 
     public Uri getContentUri() {
         Uri.Builder builder = new Uri.Builder();
