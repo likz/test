@@ -44,9 +44,9 @@ android {
         abortOnError false
     }
 
-    testOptions {
-        unitTests.returnDefaultValues = true
-    }
+//    testOptions {
+//        unitTests.returnDefaultValues = true
+//    }
 }
 
 dependencies {
@@ -63,6 +63,7 @@ dependencies {
     // Android Testing Support Library's junit
     testCompile "junit:junit:$rootProject.ext.junitVersion"
     androidTestCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile 'org.json:json:20160212'
 
     // Android Testing Support Library's runner and rules
     androidTestCompile "com.android.support.test:runner:$rootProject.ext.runnerVersion"
