@@ -7,7 +7,8 @@ import java.util.HashMap;
  * Enum des tables
  */
 public enum DBTable {
-    BOOK("book");
+    BOOK("book"),
+    OFFER("offer");
 
     static final HashMap<String, DBTable> values;
 
