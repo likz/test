@@ -7,10 +7,10 @@ import com.trantuandung.technictest.database.contract.OfferContract;
 
 public class Offer {
     private String type;
-    private String sliceValue;
+    private int sliceValue;
     private int value;
 
-    public String getSliceValue() {
+    public int getSliceValue() {
         return sliceValue;
     }
 
@@ -27,7 +27,6 @@ public class Offer {
         values.put(OfferContract.COL_TYPE, type);
         values.put(OfferContract.COL_SLICE_VALUE, sliceValue);
         values.put(OfferContract.COL_VALUE, value);
-        values.put(OfferContract.COL_BOOK_ISBN, "");
         return values;
     }
 
@@ -40,14 +39,14 @@ public class Offer {
 
         return value == offer.getValue() &&
                 !TextUtils.isEmpty(type) && type.equals(offer.getType()) &&
-                (sliceValue != null ? sliceValue.equals(offer.getSliceValue()) : offer.getSliceValue() == null);
+                sliceValue == offer.getSliceValue();
 
     }
 
     @Override
     public int hashCode() {
-        int result = getType().hashCode();
-        result = 31 * result + (getSliceValue() != null ? getSliceValue().hashCode() : 0);
+        int result = getType() != null ? getType().hashCode() : 0;
+        result = 31 * result + getSliceValue();
         result = 31 * result + getValue();
         return result;
     }
