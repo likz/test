@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#1787AA</color>
+    <color name="colorPrimaryDark">#096b91</color>
+    <color name="colorAccent">#ffb74d</color>
+
+
+    <color name="black">#000000</color>
+    <color name="lightBlack">#ff7c7c7c</color>
+    <color name="white">#ffffffff</color>
+    <color name="darkWhite">#ffcfcfcf</color>
+
+    <color name="bookItem_title">@color/white</color>
+    <color name="bookItem_price">@color/white</color>
+    <!--<color name="bookItem_price">#28282d</color>-->
+    <color name="bookItem_text_background">#aa1787AA</color>
 </resources>

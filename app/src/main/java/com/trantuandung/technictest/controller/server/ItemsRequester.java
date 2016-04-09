@@ -1,16 +1,25 @@
 package com.trantuandung.technictest.controller.server;
 
+import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.util.Log;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.trantuandung.technictest.controller.server.configure.ServerConfiguration;
 import com.trantuandung.technictest.controller.server.connected.ServerInterface;
 import com.trantuandung.technictest.database.model.Book;
 import com.trantuandung.technictest.database.model.Offer;
+import com.trantuandung.technictest.exception.RequestErrorException;
+import com.trantuandung.technictest.exception.UrlEmptyErrorException;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -36,8 +45,8 @@ public class ItemsRequester {
     }
 
     public List<Offer> getAllOfferByBooks(String isbn) throws Exception {
-        ServerInterface serverInterface = new ServerInterface();
         try {
+            ServerInterface serverInterface = new ServerInterface();
             String jsonBody = serverInterface.makeRequest(String.format(ServerConfiguration.DEFAULT_HOST_COMMERCIAL_OFFERS,isbn));
             Log.i(TAG, "getAllOfferByBooks jsonBoby = " + jsonBody +"\n");
 
@@ -47,8 +56,39 @@ public class ItemsRequester {
             Type collectionType = new TypeToken<List<Offer>>() {}.getType();
             return gson.fromJson(offerts.getJSONArray("offers").toString(), collectionType);
         } catch (Exception e) {
-            System.err.print("getAllOfferByABookCorrect " + e.getMessage());
+            Log.e(TAG, "getAllOfferByABookCorrect " + e.getMessage());
             throw new Exception(e.getMessage());
         }
+    }
+
+    /**
+     * Load Image from item's source data in database or from cloud
+     * @param context context
+     * @param url image's url
+     * @param imageView item's thumbnail view
+     */
+    public static void loadImageIntoView(Context context, String url, ImageView imageView){
+        if(context == null){
+            Log.e(TAG, "loadImageIntoView: context not found");
+            return;
+        }
+
+        if(TextUtils.isEmpty(url)){
+            Log.e(TAG, "loadImageIntoView: url not found");
+            return;
+        }
+
+        if(imageView == null){
+            Log.e(TAG, "loadImageIntoView: view not found");
+            return;
+        }
+
+        //load image's file from cloud
+        Glide.with(context)
+                .load(url)
+                .skipMemoryCache(false)
+                .priority(Priority.HIGH)
+                .centerCrop()
+                .into(imageView);
     }
 }
