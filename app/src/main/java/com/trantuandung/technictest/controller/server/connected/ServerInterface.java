@@ -14,7 +14,7 @@ import okhttp3.Response;
 public class ServerInterface {
 
     public String makeRequest(String url) throws IOException, UrlEmptyErrorException, RequestErrorException {
-        if(TextUtils.isEmpty(url)){
+        if(url == null || url.equalsIgnoreCase("")){
             throw new UrlEmptyErrorException("url empty");
         }
 
