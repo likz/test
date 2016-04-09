@@ -10,7 +10,6 @@ public class OfferContract implements BaseColumns{
     public static final String COL_TYPE = "type";
     public static final String COL_SLICE_VALUE = "sliceValue";
     public static final String COL_VALUE = "value";
-    public static final String COL_BOOK_ISBN  = "isbn";
 
     public static final String SORT_ORDER_TITLE = "lower(" + COL_TYPE + ") ASC";
     public static final String SORT_ORDER_VALUE = COL_VALUE + " ASC, " + "lower(" + COL_TYPE + ") ASC";
@@ -32,24 +31,10 @@ public class OfferContract implements BaseColumns{
             _ID,
             COL_TYPE,
             COL_SLICE_VALUE,
-            COL_VALUE,
-            COL_BOOK_ISBN
-    };
-    private static final String[] projectionByBook = new String[]{
-            COL_TYPE,
-            COL_SLICE_VALUE,
-            COL_VALUE,
-            String.format("%s.%s", OfferContract.TABLE_NAME, OfferContract.COL_BOOK_ISBN),
-            String.format("%s.%s", BookContract.TABLE_NAME, BookContract.COL_TITLE),
-            String.format("%s.%s", BookContract.TABLE_NAME, BookContract.COL_PRICE),
-            String.format("%s.%s", BookContract.TABLE_NAME, BookContract.COL_COVER)
+            COL_VALUE
     };
 
     public static String[] getProjection() {
         return projection;
-    }
-
-    public static String[] getProjectionByBook() {
-        return projectionByBook;
     }
 }

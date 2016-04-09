@@ -27,7 +27,6 @@ public class Offer {
         values.put(OfferContract.COL_TYPE, type);
         values.put(OfferContract.COL_SLICE_VALUE, sliceValue);
         values.put(OfferContract.COL_VALUE, value);
-        values.put(OfferContract.COL_BOOK_ISBN, "");
         return values;
     }
 
