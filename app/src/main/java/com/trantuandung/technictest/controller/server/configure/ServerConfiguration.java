@@ -5,6 +5,7 @@ package com.trantuandung.technictest.controller.server.configure;
  */
 public class ServerConfiguration {
     //server
-    public static final String DEFAULT_HOST = "http://henri-potier.xebia.fr/books";
-    public static final String DEFAULT_HOST_COMMERCIAL_OFFERS = " http://henri-potier.xebia.fr/books/%s/commercialOffers";
+    private static final String DEFAULT_HOST = "http://henri-potier.xebia.fr";
+    public static final String DEFAULT_HOST_BOOKS = DEFAULT_HOST + "/books";
+    public static final String DEFAULT_HOST_COMMERCIAL_OFFERS = DEFAULT_HOST_BOOKS + "/%s/commercialOffers";
 }
