@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.trantuandung.technictest.R;
+import com.trantuandung.technictest.controller.server.ItemsRequester;
 import com.trantuandung.technictest.database.model.Book;
 import com.trantuandung.technictest.view.viewholder.EmptyViewHolder;
 import com.trantuandung.technictest.view.viewholder.ViewHolderBookAdapter;
@@ -57,12 +58,8 @@ public class BooksAdapter  extends RecyclerView.Adapter<ViewHolder>{
                     viewHolderBookAdapter.getBookItemPrice().setText(String.format(resources.getString(R.string.book_price), book.getPrice()));
 
                     //load image's file from server
-                    Glide.with(context)
-                            .load(book.getCover())
-                            .skipMemoryCache(true)
-                            .priority(Priority.HIGH)
-                            .centerCrop()
-                            .into(viewHolderBookAdapter.getBookItemThumbnail());
+                    ItemsRequester.loadImageIntoView(context, book.getCover(),
+                            viewHolderBookAdapter.getBookItemThumbnail());
                 }
             }
         } else {
