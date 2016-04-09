@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+    android:id="@+id/recycleview_empty_msg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_centerVertical="true"
+    android:text="@string/text_empty_list"
+    android:textColor="@color/black"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

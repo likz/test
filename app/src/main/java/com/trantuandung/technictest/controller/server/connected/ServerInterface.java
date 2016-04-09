@@ -1,7 +1,5 @@
 package com.trantuandung.technictest.controller.server.connected;
 
-import android.text.TextUtils;
-
 import com.trantuandung.technictest.exception.RequestErrorException;
 import com.trantuandung.technictest.exception.UrlEmptyErrorException;
 

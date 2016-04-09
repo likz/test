@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="@dimen/bookItem_width"
+    android:layout_height="@dimen/bookItem_height"
+    android:layout_margin="@dimen/bookItem_padding"
+    cardView:cardCornerRadius="5dp"
+    cardView:cardElevation="8dp"
+    cardView:theme="@style/BookCardViewTheme">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/bookItem_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/bookItem_title"
+            android:layout_above="@+id/bookItem_price"
+            android:textStyle="bold"
+            android:textSize="@dimen/bookItem_txt_title"
+            style="@style/TxtBookCardView"/>
+
+        <TextView
+            android:id="@+id/bookItem_price"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/bookItem_padding"
+            android:textSize="@dimen/bookItem_txt_price"
+            android:layout_alignParentBottom="true"
+            style="@style/TxtBookCardView"/>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
