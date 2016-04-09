@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">"Technic test "</string>
+    <string name="app_name">Teste technique</string>
+
+    <string name="error_technical_problem_happened">Une erreur technique est survenue</string>
+    <string name="text_empty_list">Il n\'y a aucun élément</string>
+    <string name="book_price" translatable="false">%1$d €</string>
+    <string name="lorem_ipsum" translatable="false">Lorem ipsum.</string>
+    <string name="lorem_ipsum_5w" translatable="false">Lorem ipsum dolor sit amet.</string>
+    <string name="lorem_ipsum_2p" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque velit purus, scelerisque sollicitudin quam eget, dapibus euismod nisl. Morbi rutrum consequat imperdiet. Sed arcu dolor, molestie non risus eu, aliquet tristique dui. Nam quis suscipit urna, at gravida nulla. Fusce id vestibulum ex, ac feugiat justo. Phasellus rhoncus porttitor maximus. Praesent eleifend sit amet odio rutrum semper.
+Donec consectetur, ligula dignissim varius imperdiet, augue quam sollicitudin lorem, vel consectetur leo lacus id felis. Duis sed lobortis felis, ut placerat nisl. Nullam dignissim eu dolor eu maximus. Duis sit amet rutrum mi. Nunc in quam magna. Praesent ut aliquam nisl. Aliquam nunc sem, faucibus hendrerit neque ac, vehicula efficitur nulla. Phasellus sollicitudin orci in malesuada placerat. Etiam rhoncus, leo quis dapibus elementum, magna justo malesuada diam, sed finibus lectus lacus nec erat. Suspendisse neque orci, euismod in facilisis non, ultrices sit amet diam. Ut maximus mollis dolor sit amet interdum. In vehicula cursus laoreet.</string>
+
 </resources>
