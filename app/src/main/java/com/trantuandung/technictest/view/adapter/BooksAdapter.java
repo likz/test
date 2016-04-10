@@ -7,12 +7,12 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
 import com.trantuandung.technictest.R;
-import com.trantuandung.technictest.controller.server.ItemsRequester;
-import com.trantuandung.technictest.database.model.Book;
+import com.trantuandung.technictest.listener.BookListener;
+import com.trantuandung.technictest.model.Book;
+import com.trantuandung.technictest.server.ItemsRequester;
 import com.trantuandung.technictest.view.viewholder.EmptyViewHolder;
 import com.trantuandung.technictest.view.viewholder.ViewHolderBookAdapter;
 
@@ -25,8 +25,10 @@ public class BooksAdapter  extends RecyclerView.Adapter<ViewHolder>{
     protected List<Book> bookList;
     protected Resources resources;
     protected Context context;
+    BookListener bookListener;
 
-    public BooksAdapter(List<Book> bookList) {
+    public BooksAdapter(BookListener bookListener, List<Book> bookList) {
+        this.bookListener = bookListener;
         this.bookList = bookList;
     }
 
@@ -60,6 +62,14 @@ public class BooksAdapter  extends RecyclerView.Adapter<ViewHolder>{
                     //load image's file from server
                     ItemsRequester.loadImageIntoView(context, book.getCover(),
                             viewHolderBookAdapter.getBookItemThumbnail());
+
+                    viewHolderBookAdapter.getBookItemAdd().setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Toast.makeText(context, "add", Toast.LENGTH_SHORT).show();
+                            bookListener.addBook(book);
+                        }
+                    });
                 }
             }
         } else {

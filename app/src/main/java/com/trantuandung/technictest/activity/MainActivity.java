@@ -9,16 +9,18 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.trantuandung.technictest.R;
-import com.trantuandung.technictest.controller.server.ItemsRequester;
-import com.trantuandung.technictest.database.model.Book;
+import com.trantuandung.technictest.database.DBHelper;
+import com.trantuandung.technictest.server.ItemsRequester;
+import com.trantuandung.technictest.model.Book;
 import com.trantuandung.technictest.view.adapter.BooksAdapter;
-import com.trantuandung.technictest.view.enums.UserAdapterType;
+import com.trantuandung.technictest.enums.UserAdapterType;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = MainActivity.class.getSimpleName();
     private UserAdapterType userAdapterType = UserAdapterType.NORMAL;
+    DBHelper mDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.main_layout);
         userAdapterType = UserAdapterType.NORMAL;
+
+        this.mDbHelper = new DBHelper(this);
     }
 
     @Override
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     try {
                         List<Book> bookList = itemsRequester.getAllBook();
-                        bookAdapter = new BooksAdapter(bookList);
+                        bookAdapter = new BooksAdapter(mDbHelper,bookList);
                     } catch (Exception e) {
                         Toast.makeText(this, getResources().getText(R.string.error_technical_problem_happened),Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "onResume getAllBook error " + e.getMessage() , e);

@@ -1,4 +1,4 @@
-package com.trantuandung.technictest.controller.server.configure;
+package com.trantuandung.technictest.server.configure;
 
 /**
  * Server configuration

@@ -12,6 +12,7 @@ import com.trantuandung.technictest.R;
 
 public class ViewHolderBookAdapter extends RecyclerView.ViewHolder {
     private ImageView bookItemThumbnail;
+    private ImageView bookItemAdd;
     private TextView bookItemTitle;
     private TextView bookItemPrice;
     public ViewHolderBookAdapter(View itemView) {
@@ -42,6 +43,7 @@ public class ViewHolderBookAdapter extends RecyclerView.ViewHolder {
         });
         bookItemTitle = (TextView) itemView.findViewById(R.id.bookItem_title);
         bookItemPrice = (TextView) itemView.findViewById(R.id.bookItem_price);
+        bookItemAdd = (ImageView) itemView.findViewById(R.id.bookItem_add);
     }
 
     public ImageView getBookItemThumbnail() {
@@ -54,5 +56,9 @@ public class ViewHolderBookAdapter extends RecyclerView.ViewHolder {
 
     public TextView getBookItemPrice() {
         return bookItemPrice;
+    }
+
+    public ImageView getBookItemAdd() {
+        return bookItemAdd;
     }
 }

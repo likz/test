@@ -1,7 +1,6 @@
-package com.trantuandung.technictest.controller.server;
+package com.trantuandung.technictest.server;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
@@ -10,22 +9,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.trantuandung.technictest.controller.server.configure.ServerConfiguration;
-import com.trantuandung.technictest.controller.server.connected.ServerInterface;
-import com.trantuandung.technictest.database.model.Book;
-import com.trantuandung.technictest.database.model.Offer;
-import com.trantuandung.technictest.exception.RequestErrorException;
-import com.trantuandung.technictest.exception.UrlEmptyErrorException;
+import com.trantuandung.technictest.server.configure.ServerConfiguration;
+import com.trantuandung.technictest.server.connected.ServerInterface;
+import com.trantuandung.technictest.model.Book;
+import com.trantuandung.technictest.model.Offer;
 
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
-/**
- * Created by likz on 09/04/16.
- */
 public class ItemsRequester {
     private final static String TAG = ItemsRequester.class.getSimpleName();
 

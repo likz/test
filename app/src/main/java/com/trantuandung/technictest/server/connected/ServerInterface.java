@@ -1,4 +1,4 @@
-package com.trantuandung.technictest.controller.server.connected;
+package com.trantuandung.technictest.server.connected;
 
 import com.trantuandung.technictest.exception.RequestErrorException;
 import com.trantuandung.technictest.exception.UrlEmptyErrorException;

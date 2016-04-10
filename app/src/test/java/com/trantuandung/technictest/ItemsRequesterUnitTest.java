@@ -2,10 +2,10 @@ package com.trantuandung.technictest;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.trantuandung.technictest.controller.server.configure.ServerConfiguration;
-import com.trantuandung.technictest.controller.server.connected.ServerInterface;
-import com.trantuandung.technictest.database.model.Book;
-import com.trantuandung.technictest.database.model.Offer;
+import com.trantuandung.technictest.server.configure.ServerConfiguration;
+import com.trantuandung.technictest.server.connected.ServerInterface;
+import com.trantuandung.technictest.model.Book;
+import com.trantuandung.technictest.model.Offer;
 
 import org.json.JSONObject;
 import org.junit.Test;
