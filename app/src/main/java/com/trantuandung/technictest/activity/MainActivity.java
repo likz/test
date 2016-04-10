@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,10 +85,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                     break;
             }
-            final GridLayoutManager mLayoutManager = new GridLayoutManager(this,4);
+            final GridLayoutManager mLayoutManager = new GridLayoutManager(this,1);
             contentListView.setLayoutManager(mLayoutManager);
             contentListView.setAdapter(bookAdapter);
             contentListView.setHasFixedSize(true);
+
+            final float cardViewWidth = getResources().getDimension(R.dimen.bookItem_width);
+            contentListView.getViewTreeObserver().addOnGlobalLayoutListener(
+                    new ViewTreeObserver.OnGlobalLayoutListener() {
+                        @Override
+                        public void onGlobalLayout() {
+                            contentListView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                            int viewWidth = contentListView.getMeasuredWidth();
+
+                            int newSpanCount = (int) Math.floor(viewWidth / cardViewWidth);
+                            if(newSpanCount < 1){
+                                newSpanCount = 1;
+                            }
+                            mLayoutManager.setSpanCount(newSpanCount);
+                            mLayoutManager.requestLayout();
+                        }
+                    });
+
         }
     }
 
