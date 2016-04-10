@@ -8,13 +8,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.trantuandung.technictest.listener.BookListener;
-import com.trantuandung.technictest.listener.CartListener;
+import com.trantuandung.technictest.listener.PannierListener;
 import com.trantuandung.technictest.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBHelper extends SQLiteOpenHelper implements CartListener,BookListener {
+public class DBHelper extends SQLiteOpenHelper implements PannierListener,BookListener {
     private final String TAG = DBHelper.class.getName();
 
     // DB Name, same is used to name the sqlite DB file
@@ -62,7 +62,7 @@ public class DBHelper extends SQLiteOpenHelper implements CartListener,BookListe
         SQLiteDatabase db = getWritableDatabase();
         try {
             db.beginTransaction();
-            Log.e(TAG, "addBook: " + book.getTitle());
+            Log.i(TAG, "addBook: " + book.getTitle());
             db.execSQL("INSERT INTO book (isbn, title, price, cover) VALUES (?, ?, ?, ?)",
                     new Object[]{book.getIsbn(), book.getTitle(), book.getPrice(), book.getCover()});
             db.setTransactionSuccessful();
@@ -78,7 +78,7 @@ public class DBHelper extends SQLiteOpenHelper implements CartListener,BookListe
         SQLiteDatabase db = getWritableDatabase();
         try {
             db.beginTransaction();
-            Log.e(TAG, "deleteBook: " + book.getTitle());
+            Log.i(TAG, "deleteBook: " + book.getTitle());
             db.execSQL("DELETE FROM book WHERE book._id = ?",
                     new Object[]{book.getId()});
             db.setTransactionSuccessful();

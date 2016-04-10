@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/activity_horizontal_margin"
     tools:context=".activity.MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/mainToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/colorPrimary">
+        <LinearLayout
+            android:id="@+id/mainToolbarTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toStartOf="@+id/mainToolbarCart"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:theme="@style/ToolbarTheme"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/mainToolbarTotalLabel"
+                android:text="@string/main_toolbar_total_label"
+                style="@style/ToolbarTextTheme" />
+
+            <TextView
+                android:id="@+id/mainToolbarTotalSuggestedPrice"
+                android:text="@string/main_toolbar_price"
+                android:textColor="@color/darkWhite"
+                style="@style/ToolbarTextTheme"/>
+
+            <TextView
+                android:id="@+id/mainToolbarTotalPrice"
+                android:text="@string/main_toolbar_price"
+                style="@style/ToolbarTextTheme" />
+
+            <Button
+                android:id="@+id/mainToolbarContinueShopping"
+                android:layout_width="@dimen/toolbar_button"
+                android:layout_height="@dimen/toolbar_button"
+                android:textColor="@color/black"
+                android:layout_marginEnd="@dimen/toolbar_padding"
+                android:background="@drawable/continue_shopping" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/mainToolbarCart"
+            android:layout_toStartOf="@+id/view"
+            android:layout_width="@dimen/toolbar_button"
+            android:layout_height="@dimen/toolbar_button"
+            android:layout_marginEnd="@dimen/toolbar_padding"
+            android:background="@drawable/shopping_cart"/>
+
+        <View
+            android:id="@+id/view"
+            android:layout_alignParentEnd="true"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_content"
+        android:id="@+id/mainContent"
+        android:layout_below="@+id/mainToolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/recycleview_padding"

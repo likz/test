@@ -4,7 +4,7 @@ import com.trantuandung.technictest.model.Book;
 
 import java.util.List;
 
-public interface CartListener {
+public interface PannierListener {
 
     void deleteBook(Book book);
 

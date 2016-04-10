@@ -2,6 +2,8 @@ package com.trantuandung.technictest.model;
 
 import com.trantuandung.technictest.enums.OfferType;
 
+import java.util.List;
+
 public class Offer {
     private OfferType type;
     private int sliceValue;
@@ -54,5 +56,28 @@ public class Offer {
         result = 31 * result + getSliceValue();
         result = 31 * result + getValue();
         return result;
+    }
+
+    public int calculOffer(List<Book> bookList) {
+        switch (type){
+            case MINUS:
+                return value;
+            case PERCENTAGE:
+                return totalPrice(bookList) * value / 100;
+            case SLICE:
+                if(sliceValue <= 0){
+                    return 0;
+                }
+                return (totalPrice(bookList) / sliceValue) * value;
+        }
+        return 0;
+    }
+
+    private int totalPrice(List<Book> bookList) {
+        int sumPrice = 0;
+        for (Book book : bookList) {
+            sumPrice += book.getPrice();
+        }
+        return sumPrice;
     }
 }

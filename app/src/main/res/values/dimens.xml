@@ -10,4 +10,7 @@
     <dimen name="bookItem_width">192dp</dimen>
     <dimen name="bookItem_height">324dp</dimen>
     <dimen name="bookItem_thumbnail_height">244dp</dimen>
+    <dimen name="toolbar_padding">8dp</dimen>
+    <dimen name="toolbar_continue_shopping">120dp</dimen>
+    <dimen name="toolbar_button">64dp</dimen>
 </resources>

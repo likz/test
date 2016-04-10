@@ -10,12 +10,11 @@ import android.widget.TextView;
 
 import com.trantuandung.technictest.R;
 
-public class ViewHolderBookAdapter extends RecyclerView.ViewHolder {
+public class ViewHolderBookItem  extends RecyclerView.ViewHolder{
     private ImageView bookItemThumbnail;
-    private ImageView bookItemAdd;
     private TextView bookItemTitle;
     private TextView bookItemPrice;
-    public ViewHolderBookAdapter(View itemView) {
+    public ViewHolderBookItem(View itemView) {
         super(itemView);
         bookItemThumbnail = (ImageView) itemView.findViewById(R.id.bookItem_thumbnail);
         bookItemThumbnail.setOnTouchListener(new View.OnTouchListener() {
@@ -43,9 +42,10 @@ public class ViewHolderBookAdapter extends RecyclerView.ViewHolder {
         });
         bookItemTitle = (TextView) itemView.findViewById(R.id.bookItem_title);
         bookItemPrice = (TextView) itemView.findViewById(R.id.bookItem_price);
-        bookItemAdd = (ImageView) itemView.findViewById(R.id.bookItem_add);
+        addButton();
     }
 
+    protected void addButton(){}
     public ImageView getBookItemThumbnail() {
         return bookItemThumbnail;
     }
@@ -58,7 +58,4 @@ public class ViewHolderBookAdapter extends RecyclerView.ViewHolder {
         return bookItemPrice;
     }
 
-    public ImageView getBookItemAdd() {
-        return bookItemAdd;
-    }
 }

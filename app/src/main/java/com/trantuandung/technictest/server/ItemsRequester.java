@@ -8,7 +8,13 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
+import com.trantuandung.technictest.enums.OfferType;
 import com.trantuandung.technictest.server.configure.ServerConfiguration;
 import com.trantuandung.technictest.server.connected.ServerInterface;
 import com.trantuandung.technictest.model.Book;
@@ -32,7 +38,7 @@ public class ItemsRequester {
             Type collectionType = new TypeToken<List<Book>>() {}.getType();
             return gson.fromJson(jsonBody, collectionType);
         } catch (Exception e) {
-            System.err.print("testGetAllBook " + e.getMessage());
+            Log.e(TAG, "testGetAllBook " + e.getMessage());
             throw new Exception(e.getMessage());
         }
     }
@@ -45,7 +51,10 @@ public class ItemsRequester {
 
             JSONObject offerts = new JSONObject(jsonBody);
 
-            Gson gson = new Gson();
+            GsonBuilder gsonBuilder = new GsonBuilder();
+            gsonBuilder.registerTypeAdapter(OfferType.class, new OfferTypeDeserializer());
+            Gson gson = gsonBuilder.create();
+
             Type collectionType = new TypeToken<List<Offer>>() {}.getType();
             return gson.fromJson(offerts.getJSONArray("offers").toString(), collectionType);
         } catch (Exception e) {
@@ -83,5 +92,21 @@ public class ItemsRequester {
                 .priority(Priority.HIGH)
                 .centerCrop()
                 .into(imageView);
+    }
+
+    private class OfferTypeDeserializer implements JsonDeserializer<OfferType>
+    {
+        @Override
+        public OfferType deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+                throws JsonParseException
+        {
+            OfferType[] offerTypeList = OfferType.values();
+            for (OfferType offerType : offerTypeList)
+            {
+                if (offerType.getValue().equals(json.getAsString()))
+                    return offerType;
+            }
+            return null;
+        }
     }
 }
