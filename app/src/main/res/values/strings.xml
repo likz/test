@@ -12,6 +12,8 @@ Donec consectetur, ligula dignissim varius imperdiet, augue quam sollicitudin lo
     <string name="continue_shopping">Continuer vos achats</string>
     <string name="main_toolbar_total_label">Total:</string>
     <string name="main_toolbar_price" translatable="false">%1$d €</string>
+    <string name="add_book">%1$s est ajouté au panier</string>
+    <string name="delete_book">%1$s est enlevé au panier</string>
 
 
 </resources>

@@ -15,7 +15,7 @@ import com.trantuandung.technictest.R;
 import com.trantuandung.technictest.database.DBHelper;
 import com.trantuandung.technictest.listener.AmountListener;
 import com.trantuandung.technictest.listener.CommercialOfferCallBack;
-import com.trantuandung.technictest.model.CommercialOffer;
+import com.trantuandung.technictest.server.CommercialOffer;
 import com.trantuandung.technictest.server.ItemsRequester;
 import com.trantuandung.technictest.model.Book;
 import com.trantuandung.technictest.view.adapter.BooksAdapter;

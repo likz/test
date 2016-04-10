@@ -38,7 +38,7 @@ public class ItemsRequester {
             Type collectionType = new TypeToken<List<Book>>() {}.getType();
             return gson.fromJson(jsonBody, collectionType);
         } catch (Exception e) {
-            System.err.print("testGetAllBook " + e.getMessage());
+            Log.e(TAG, "testGetAllBook " + e.getMessage());
             throw new Exception(e.getMessage());
         }
     }

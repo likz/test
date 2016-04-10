@@ -63,7 +63,7 @@ public class BooksPannierAdapter extends BooksAdapter{
                     viewHolderBookPannierAdapter.getBookItemDelete().setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context, "book id " + book.getId(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, String.format(resources.getString(R.string.delete_book), book.getTitle()), Toast.LENGTH_SHORT).show();
                             pannierListener.deleteBook(book);
                             amountListener.setCartAmount();
                             bookList = pannierListener.getBookList();

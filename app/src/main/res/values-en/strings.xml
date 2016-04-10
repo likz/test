@@ -5,4 +5,6 @@
     <string name="text_empty_list">empty list</string>
     <string name="book_add_to_cart">add to cart</string>
     <string name="continue_shopping">continue your shopping</string>
+    <string name="add_book">%1$s added to cart</string>
+    <string name="delete_book">%1$s deleted</string>
 </resources>

@@ -1,8 +1,9 @@
-package com.trantuandung.technictest.model;
+package com.trantuandung.technictest.server;
 
-import com.trantuandung.technictest.listener.PannierListener;
 import com.trantuandung.technictest.listener.CommercialOfferCallBack;
-import com.trantuandung.technictest.server.ItemsRequester;
+import com.trantuandung.technictest.listener.PannierListener;
+import com.trantuandung.technictest.model.Book;
+import com.trantuandung.technictest.model.Offer;
 
 import java.util.List;
 

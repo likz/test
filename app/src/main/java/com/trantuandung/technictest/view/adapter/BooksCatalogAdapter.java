@@ -60,7 +60,7 @@ public class BooksCatalogAdapter extends BooksAdapter{
                     viewHolderBookCatalogAdapter.getBookItemAdd().setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(context, "add", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, String.format(resources.getString(R.string.add_book), book.getTitle()), Toast.LENGTH_SHORT).show();
                             bookListener.addBook(book);
                         }
                     });
