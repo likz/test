@@ -1,6 +1,6 @@
 package com.trantuandung.technictest;
 
-import com.trantuandung.technictest.controller.server.configure.ServerConfiguration;
+import com.trantuandung.technictest.server.configure.ServerConfiguration;
 import com.trantuandung.technictest.exception.RequestErrorException;
 import com.trantuandung.technictest.exception.UrlEmptyErrorException;
 

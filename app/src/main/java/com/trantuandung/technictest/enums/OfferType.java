@@ -1,8 +1,4 @@
-package com.trantuandung.technictest.database.enums;
-
-import android.text.TextUtils;
-
-import com.trantuandung.technictest.database.model.Offer;
+package com.trantuandung.technictest.enums;
 
 import java.util.HashMap;
 
@@ -32,7 +28,7 @@ public enum OfferType {
     }
 
     public String getValue() {
-        return this.value;
+        return value;
     }
 
 }

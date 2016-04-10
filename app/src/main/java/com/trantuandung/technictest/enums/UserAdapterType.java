@@ -1,4 +1,4 @@
-package com.trantuandung.technictest.view.enums;
+package com.trantuandung.technictest.enums;
 
 import java.util.HashMap;
 

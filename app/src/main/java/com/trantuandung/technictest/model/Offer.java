@@ -1,9 +1,6 @@
-package com.trantuandung.technictest.database.model;
+package com.trantuandung.technictest.model;
 
-import android.content.ContentValues;
-
-import com.trantuandung.technictest.database.contract.OfferContract;
-import com.trantuandung.technictest.database.enums.OfferType;
+import com.trantuandung.technictest.enums.OfferType;
 
 public class Offer {
     private OfferType type;
@@ -36,14 +33,6 @@ public class Offer {
 
     public int getValue() {
         return value;
-    }
-
-    public ContentValues getContentValues() {
-        ContentValues values = new ContentValues();
-        values.put(OfferContract.COL_TYPE, type.getValue());
-        values.put(OfferContract.COL_SLICE_VALUE, sliceValue);
-        values.put(OfferContract.COL_VALUE, value);
-        return values;
     }
 
     @Override

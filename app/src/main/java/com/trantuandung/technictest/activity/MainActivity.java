@@ -9,10 +9,10 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.trantuandung.technictest.R;
-import com.trantuandung.technictest.controller.server.ItemsRequester;
-import com.trantuandung.technictest.database.model.Book;
+import com.trantuandung.technictest.server.ItemsRequester;
+import com.trantuandung.technictest.model.Book;
 import com.trantuandung.technictest.view.adapter.BooksAdapter;
-import com.trantuandung.technictest.view.enums.UserAdapterType;
+import com.trantuandung.technictest.enums.UserAdapterType;
 
 import java.util.List;
 

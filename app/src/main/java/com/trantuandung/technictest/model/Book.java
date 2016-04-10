@@ -1,9 +1,6 @@
-package com.trantuandung.technictest.database.model;
+package com.trantuandung.technictest.model;
 
-import android.content.ContentValues;
 import android.text.TextUtils;
-
-import com.trantuandung.technictest.database.contract.BookContract;
 
 public class Book {
     private String isbn;
@@ -25,15 +22,6 @@ public class Book {
 
     public String getTitle() {
         return title;
-    }
-
-    public ContentValues getContentValues() {
-        ContentValues values = new ContentValues();
-        values.put(BookContract.COL_ISBN, isbn);
-        values.put(BookContract.COL_TITLE, title);
-        values.put(BookContract.COL_PRICE, price);
-        values.put(BookContract.COL_COVER, cover);
-        return values;
     }
 
     @Override
