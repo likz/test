@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.trantuandung.technictest.R;
 import com.trantuandung.technictest.database.DBHelper;
+import com.trantuandung.technictest.listener.CommercialOfferCallBack;
+import com.trantuandung.technictest.model.CommercialOffer;
 import com.trantuandung.technictest.server.ItemsRequester;
 import com.trantuandung.technictest.model.Book;
 import com.trantuandung.technictest.view.adapter.BooksAdapter;
@@ -64,6 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             List<Book> bookList;
             switch (userAdapterType){
                 case PANNIER:
+                    setCartAmount();
+
                     bookList = mDbHelper.getBookList();
                     bookAdapter = new BooksAdapter(mDbHelper,bookList);
                     break;
@@ -73,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         bookAdapter = new BooksAdapter(mDbHelper,bookList);
                     } catch (Exception e) {
                         Toast.makeText(this, getResources().getText(R.string.error_technical_problem_happened),Toast.LENGTH_SHORT).show();
-                        Log.e(TAG, "onResume getAllBook error " + e.getMessage() , e);
+                        Log.e(TAG, "initView PANNIER error " + e.getMessage() , e);
                     }
                     break;
             }
@@ -82,6 +86,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             contentListView.setAdapter(bookAdapter);
             contentListView.setHasFixedSize(true);
         }
+    }
+
+    private void setCartAmount(){
+        TextView mainToolbarTotalSuggestedPrice = (TextView) findViewById(R.id.mainToolbarTotalSuggestedPrice);
+        if(mainToolbarTotalSuggestedPrice != null){
+            mainToolbarTotalSuggestedPrice.setText(String.format(getResources().getString(R.string.main_toolbar_price),mDbHelper.totalCart()));
+        }
+
+        CommercialOffer commercialOffer = new CommercialOffer(mDbHelper);
+        commercialOffer.getOffert(new CommercialOfferCallBack() {
+            @Override
+            public void success(int amount) {
+                TextView mainToolbarTotalPrice = (TextView) findViewById(R.id.mainToolbarTotalPrice);
+                if(mainToolbarTotalPrice != null){
+                    mainToolbarTotalPrice.setText(String.format(getResources().getString(R.string.main_toolbar_price),amount));
+                }
+            }
+
+            @Override
+            public void failure(String messageError) {
+                Toast.makeText(MainActivity.this, getResources().getText(R.string.error_technical_problem_happened),Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "setCartAmount error " + messageError);
+            }
+        });
     }
 
     private void makeVisibilityButtonOnToolbar(){
