@@ -1,10 +1,6 @@
-package com.trantuandung.technictest.database.contract;
+package com.trantuandung.technictest.database;
 
-import android.content.ContentResolver;
 import android.provider.BaseColumns;
-
-import com.trantuandung.technictest.database.ProviderInfos;
-import com.trantuandung.technictest.database.enums.DBTable;
 
 public class BookContract implements BaseColumns {
     public static final String COL_ISBN = "isbn";
@@ -15,9 +11,7 @@ public class BookContract implements BaseColumns {
     public static final String SORT_ORDER_TITLE = "lower(" + COL_TITLE + ") ASC";
     public static final String SORT_ORDER_PRICE = COL_PRICE + " ASC, " + "lower(" + COL_TITLE + ") ASC";
 
-    public static final String TABLE_NAME = DBTable.BOOK.getValue();
-
-    public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + ProviderInfos.AUTHORITY + "." + TABLE_NAME;
+    public static final String TABLE_NAME = "book";
 
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     public static final String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
