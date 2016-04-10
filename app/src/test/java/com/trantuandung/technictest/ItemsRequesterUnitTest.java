@@ -69,7 +69,7 @@ public class ItemsRequesterUnitTest {
         ServerInterface serverInterface = new ServerInterface();
         try {
             String isbn = "bbcee412-be64-4a0c-bf1e-315977acd924";
-            String jsonBody = serverInterface.makeRequest(String.format(ServerConfiguration.DEFAULT_HOST_COMMERCIAL_OFFERS,""));
+            String jsonBody = serverInterface.makeRequest(String.format(ServerConfiguration.DEFAULT_HOST_COMMERCIAL_OFFERS,isbn));
             assertNotNull(jsonBody);
             System.out.print("getAllOfferByABookCorrect jsonBoby = " + jsonBody +"\n");
 

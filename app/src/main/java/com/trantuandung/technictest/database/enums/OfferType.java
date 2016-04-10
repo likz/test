@@ -4,53 +4,34 @@ import android.text.TextUtils;
 
 import com.trantuandung.technictest.database.model.Offer;
 
+import java.util.HashMap;
+
 public enum OfferType {
-    UNKNOWN(-1),
-    PERCENTAGE(0),
-    MINUS(1),
-    SLICE(2);
+    UNKNOWN("unknown"),
+    PERCENTAGE("percentage"),
+    MINUS("minus"),
+    SLICE("slice");
 
-    private final int value;
+    static final HashMap<String, OfferType> values;
 
-    OfferType(int value) {
+    static {
+        values = new HashMap<String, OfferType>();
+        for (OfferType type : OfferType.values()) {
+            values.put(type.value, type);
+        }
+    }
+
+    private final String value;
+
+    OfferType(String value) {
         this.value = value;
     }
 
-    public static OfferType matchValue(int value) {
-        switch (value) {
-            case 0:
-                return PERCENTAGE;
-            case 1:
-                return MINUS;
-            case 2:
-                return SLICE;
-            default:
-                return UNKNOWN;
-        }
+    public static OfferType matchValue(String value) {
+        return values.get(value);
     }
 
-    public static OfferType getType(String value) {
-        if(TextUtils.isEmpty(value)){
-            return UNKNOWN;
-        }
-
-        switch (value) {
-            case "percentage":
-                return PERCENTAGE;
-            case "minus":
-                return MINUS;
-            case "slice":
-                return SLICE;
-            default:
-                return UNKNOWN;
-        }
-    }
-
-    public static OfferType getOfferType(Offer offer) {
-        return getType(offer.getType());
-    }
-
-    public int getValue() {
+    public String getValue() {
         return this.value;
     }
 
