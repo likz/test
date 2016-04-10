@@ -4,17 +4,9 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.trantuandung.technictest.R;
-import com.trantuandung.technictest.listener.BookListener;
 import com.trantuandung.technictest.model.Book;
-import com.trantuandung.technictest.server.ItemsRequester;
-import com.trantuandung.technictest.view.viewholder.EmptyViewHolder;
-import com.trantuandung.technictest.view.viewholder.ViewHolderBookCatalogAdapter;
 
 import java.util.List;
 
