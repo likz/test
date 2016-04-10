@@ -13,16 +13,19 @@ import android.widget.Toast;
 
 import com.trantuandung.technictest.R;
 import com.trantuandung.technictest.database.DBHelper;
+import com.trantuandung.technictest.listener.AmountListener;
 import com.trantuandung.technictest.listener.CommercialOfferCallBack;
 import com.trantuandung.technictest.model.CommercialOffer;
 import com.trantuandung.technictest.server.ItemsRequester;
 import com.trantuandung.technictest.model.Book;
 import com.trantuandung.technictest.view.adapter.BooksAdapter;
+import com.trantuandung.technictest.view.adapter.BooksCatalogAdapter;
 import com.trantuandung.technictest.enums.UserAdapterType;
+import com.trantuandung.technictest.view.adapter.BooksPannierAdapter;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AmountListener{
     private final static String TAG = MainActivity.class.getSimpleName();
     private UserAdapterType userAdapterType = UserAdapterType.NORMAL;
     DBHelper mDbHelper;
@@ -69,12 +72,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     setCartAmount();
 
                     bookList = mDbHelper.getBookList();
-                    bookAdapter = new BooksAdapter(mDbHelper,bookList);
+                    bookAdapter = new BooksPannierAdapter(this, mDbHelper, bookList);
                     break;
                 default:
                     try {
                         bookList = itemsRequester.getAllBook();
-                        bookAdapter = new BooksAdapter(mDbHelper,bookList);
+                        bookAdapter = new BooksCatalogAdapter(mDbHelper, bookList);
                     } catch (Exception e) {
                         Toast.makeText(this, getResources().getText(R.string.error_technical_problem_happened),Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "initView PANNIER error " + e.getMessage() , e);
@@ -88,7 +91,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void setCartAmount(){
+    @Override
+    public void setCartAmount(){
         TextView mainToolbarTotalSuggestedPrice = (TextView) findViewById(R.id.mainToolbarTotalSuggestedPrice);
         if(mainToolbarTotalSuggestedPrice != null){
             mainToolbarTotalSuggestedPrice.setText(String.format(getResources().getString(R.string.main_toolbar_price),mDbHelper.totalCart()));
