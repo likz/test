@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_width="@dimen/bookItem_width"
+    android:layout_height="@dimen/bookItem_height"
+    android:layout_margin="@dimen/bookItem_padding"
+    cardView:cardCornerRadius="5dp"
+    cardView:cardElevation="8dp"
+    cardView:theme="@style/BookCardViewTheme">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/bookItem_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bookItem_thumbnail_height"
+            android:scaleType="centerCrop"
+            android:clickable="true"
+            android:src="@mipmap/ic_launcher"
+            android:contentDescription="@string/app_name" />
+
+        <TextView
+            android:id="@+id/bookItem_title"
+            android:textSize="@dimen/bookItem_txt_title"
+            style="@style/TxtBookCardView"
+            android:maxLines="2"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/bookItem_padding">
+            <TextView
+                android:id="@+id/bookItem_price"
+                android:layout_width="wrap_content"
+                android:paddingBottom="@dimen/bookItem_padding"
+                android:textSize="@dimen/bookItem_txt_price"
+                android:textColor="@color/bookItem_price"
+                android:text="@string/lorem_ipsum"
+                style="@style/TxtBookCardView"
+                android:layout_centerVertical="true"
+                android:singleLine="true"/>
+            <ImageView
+                android:id="@+id/bookItem_delete"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:padding="4dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/delete"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/book_add_to_cart" />
+        </RelativeLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
