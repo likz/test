@@ -1,26 +1,26 @@
 package com.trantuandung.technictest.model;
 
-import com.trantuandung.technictest.listener.CartListener;
+import com.trantuandung.technictest.listener.PannierListener;
 import com.trantuandung.technictest.listener.CommercialOfferCallBack;
 import com.trantuandung.technictest.server.ItemsRequester;
 
 import java.util.List;
 
 public class CommercialOffer {
-    CartListener cartListener;
+    PannierListener pannierListener;
 
-    public CommercialOffer(CartListener cartListener){
-        this.cartListener = cartListener;
+    public CommercialOffer(PannierListener pannierListener){
+        this.pannierListener = pannierListener;
     }
 
     public void getOffert(final CommercialOfferCallBack callback) {
-        final List<Book> books = cartListener.getBookList();
+        final List<Book> books = pannierListener.getBookList();
         if (books.isEmpty()) {
             callback.success(0);
         }else{
             ItemsRequester itemsRequester = new ItemsRequester();
             try {
-                List<Offer> offerList = itemsRequester.getAllOfferByBooks(isbnValues(cartListener.getBookList()));
+                List<Offer> offerList = itemsRequester.getAllOfferByBooks(isbnValues(pannierListener.getBookList()));
                 int bestOffer = 0;
                 for (Offer offer : offerList) {
                     int currentOffer = offer.calculOffer(books);
@@ -28,7 +28,7 @@ public class CommercialOffer {
                         bestOffer = currentOffer;
                     }
                 }
-                callback.success(cartListener.totalCart() - bestOffer);
+                callback.success(pannierListener.totalCart() - bestOffer);
             } catch (Exception e) {
                 callback.failure(e.getMessage());
             }
