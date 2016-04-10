@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.trantuandung.technictest.R;
 import com.trantuandung.technictest.listener.BookListener;
@@ -62,9 +63,10 @@ public class BooksAdapter  extends RecyclerView.Adapter<ViewHolder>{
                     ItemsRequester.loadImageIntoView(context, book.getCover(),
                             viewHolderBookAdapter.getBookItemThumbnail());
 
-                    viewHolderBookAdapter.itemView.setOnClickListener(new View.OnClickListener() {
+                    viewHolderBookAdapter.getBookItemAdd().setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            Toast.makeText(context, "add", Toast.LENGTH_SHORT).show();
                             bookListener.addBook(book);
                         }
                     });

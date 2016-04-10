@@ -8,6 +8,6 @@
     <dimen name="bookItem_txt_title">16sp</dimen>
     <dimen name="bookItem_txt_price">14sp</dimen>
     <dimen name="bookItem_width">192dp</dimen>
-    <dimen name="bookItem_height">312dp</dimen>
+    <dimen name="bookItem_height">324dp</dimen>
     <dimen name="bookItem_thumbnail_height">244dp</dimen>
 </resources>

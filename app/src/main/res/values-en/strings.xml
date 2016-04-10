@@ -3,4 +3,5 @@
     <string name="app_name">Technic test</string>
     <string name="error_technical_problem_happened">A technical error happened.</string>
     <string name="text_empty_list">empty list</string>
+    <string name="book_add_to_cart">add to cart</string>
 </resources>
