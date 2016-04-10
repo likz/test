@@ -1,8 +1,12 @@
 package com.trantuandung.technictest.model;
 
+import android.database.Cursor;
 import android.text.TextUtils;
 
+import com.trantuandung.technictest.database.BookContract;
+
 public class Book {
+    private int id;
     private String isbn;
     private String title;
     private int price;
@@ -24,6 +28,10 @@ public class Book {
         return title;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -37,6 +45,13 @@ public class Book {
                 !TextUtils.isEmpty(cover) && cover.equals(book.getCover());
     }
 
+    public Book(Cursor cursor) {
+        id = cursor.getInt(cursor.getColumnIndex(BookContract._ID));
+        isbn = cursor.getString(cursor.getColumnIndex(BookContract.COL_ISBN));
+        title = cursor.getString(cursor.getColumnIndex(BookContract.COL_TITLE));
+        price = cursor.getInt(cursor.getColumnIndex(BookContract.COL_PRICE));
+        cover = cursor.getString(cursor.getColumnIndex(BookContract.COL_COVER));
+    }
     @Override
     public int hashCode() {
         int result = getIsbn() != null ? getIsbn().hashCode() : 0;

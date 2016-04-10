@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.trantuandung.technictest.R;
-import com.trantuandung.technictest.server.ItemsRequester;
+import com.trantuandung.technictest.listener.BookListener;
 import com.trantuandung.technictest.model.Book;
+import com.trantuandung.technictest.server.ItemsRequester;
 import com.trantuandung.technictest.view.viewholder.EmptyViewHolder;
 import com.trantuandung.technictest.view.viewholder.ViewHolderBookAdapter;
 
@@ -23,8 +24,10 @@ public class BooksAdapter  extends RecyclerView.Adapter<ViewHolder>{
     protected List<Book> bookList;
     protected Resources resources;
     protected Context context;
+    BookListener bookListener;
 
-    public BooksAdapter(List<Book> bookList) {
+    public BooksAdapter(BookListener bookListener, List<Book> bookList) {
+        this.bookListener = bookListener;
         this.bookList = bookList;
     }
 
@@ -58,6 +61,13 @@ public class BooksAdapter  extends RecyclerView.Adapter<ViewHolder>{
                     //load image's file from server
                     ItemsRequester.loadImageIntoView(context, book.getCover(),
                             viewHolderBookAdapter.getBookItemThumbnail());
+
+                    viewHolderBookAdapter.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            bookListener.addBook(book);
+                        }
+                    });
                 }
             }
         } else {
