@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.trantuandung.technictest.R;
+import com.trantuandung.technictest.listener.BadgeCountListener;
 import com.trantuandung.technictest.listener.BookListener;
 import com.trantuandung.technictest.model.Book;
 import com.trantuandung.technictest.server.ItemsRequester;
@@ -20,10 +21,12 @@ public class BooksCatalogAdapter extends BooksAdapter{
     private final String TAG = BooksCatalogAdapter.class.getName();
 
     private BookListener bookListener;
+    private BadgeCountListener badgeCountListener;
 
-    public BooksCatalogAdapter(BookListener bookListener, List<Book> bookList) {
+    public BooksCatalogAdapter(BadgeCountListener badgeCountListener, BookListener bookListener, List<Book> bookList) {
         super(bookList);
         this.bookListener = bookListener;
+        this.badgeCountListener = badgeCountListener;
     }
 
     @Override
@@ -62,6 +65,7 @@ public class BooksCatalogAdapter extends BooksAdapter{
                         public void onClick(View v) {
                             Toast.makeText(context, String.format(resources.getString(R.string.add_book), book.getTitle()), Toast.LENGTH_SHORT).show();
                             bookListener.addBook(book);
+                            badgeCountListener.updateBadgeView();
                         }
                     });
                 }
