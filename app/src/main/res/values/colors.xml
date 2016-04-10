@@ -16,4 +16,5 @@
     <color name="bookItem_price">@color/colorPrimary</color>
     <!--<color name="bookItem_price">#28282d</color>-->
     <color name="bookItem_text_background">#aa1787AA</color>
+    <color name="badge_view">@color/colorAccent</color>
 </resources>

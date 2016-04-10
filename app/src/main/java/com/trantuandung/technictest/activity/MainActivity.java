@@ -2,6 +2,8 @@ package com.trantuandung.technictest.activity;
 
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,10 +17,12 @@ import android.widget.Toast;
 import com.trantuandung.technictest.R;
 import com.trantuandung.technictest.database.DBHelper;
 import com.trantuandung.technictest.listener.AmountListener;
+import com.trantuandung.technictest.listener.BadgeCountListener;
 import com.trantuandung.technictest.listener.CommercialOfferCallBack;
 import com.trantuandung.technictest.server.CommercialOffer;
 import com.trantuandung.technictest.server.ItemsRequester;
 import com.trantuandung.technictest.model.Book;
+import com.trantuandung.technictest.view.BadgeView;
 import com.trantuandung.technictest.view.adapter.BooksAdapter;
 import com.trantuandung.technictest.view.adapter.BooksCatalogAdapter;
 import com.trantuandung.technictest.enums.UserAdapterType;
@@ -26,11 +30,12 @@ import com.trantuandung.technictest.view.adapter.BooksPannierAdapter;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, AmountListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AmountListener, BadgeCountListener{
     private final static String TAG = MainActivity.class.getSimpleName();
     private UserAdapterType userAdapterType = UserAdapterType.NORMAL;
     DBHelper mDbHelper;
     BooksAdapter bookAdapter;
+    private BadgeView tvBadgeView;
 
 
     @Override
@@ -77,8 +82,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     break;
                 default:
                     try {
+                        updateBadgeView();
                         bookList = itemsRequester.getAllBook();
-                        bookAdapter = new BooksCatalogAdapter(mDbHelper, bookList);
+                        bookAdapter = new BooksCatalogAdapter(this, mDbHelper, bookList);
                     } catch (Exception e) {
                         Toast.makeText(this, getResources().getText(R.string.error_technical_problem_happened),Toast.LENGTH_SHORT).show();
                         Log.e(TAG, "initView PANNIER error " + e.getMessage() , e);
@@ -154,5 +160,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
 
+    }
+
+    @Override
+    public void updateBadgeView(){
+        final int count = mDbHelper.getBookList().size();
+        final int marginHorzontal = 8;
+        final int nbCharater = ("" + count).length();
+
+        (new Handler(Looper.getMainLooper())).post(new Runnable() {
+            @Override
+            public void run() {
+                if (tvBadgeView == null) {
+                    tvBadgeView = new BadgeView(MainActivity.this, findViewById(R.id.mainToolbarCartBadge));
+                }
+
+                tvBadgeView.setText(count+"");
+                Log.i(TAG, "updateBadgeView nb book = " + count);
+
+                if (nbCharater == 1)
+                    tvBadgeView.setBadgeMarginHorizontal(marginHorzontal);
+                else if (nbCharater > 1 && nbCharater < 4)
+                    tvBadgeView.setBadgeMarginHorizontal(marginHorzontal - nbCharater * 4);
+                else
+                    tvBadgeView.setBadgeMarginHorizontal(marginHorzontal - 3 * 4);
+
+                tvBadgeView.show();
+            }
+        });
     }
 }
