@@ -5,8 +5,9 @@
 
     <dimen name="recycleview_padding">8dp</dimen>
     <dimen name="bookItem_padding">4dp</dimen>
-    <dimen name="bookItem_txt_title">18sp</dimen>
+    <dimen name="bookItem_txt_title">16sp</dimen>
     <dimen name="bookItem_txt_price">14sp</dimen>
-    <dimen name="bookItem_height">200dp</dimen>
-    <dimen name="bookItem_width">144dp</dimen>
+    <dimen name="bookItem_width">192dp</dimen>
+    <dimen name="bookItem_height">346dp</dimen>
+    <dimen name="bookItem_thumbnail_height">244dp</dimen>
 </resources>

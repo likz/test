@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1787AA</color>
-    <color name="colorPrimaryDark">#096b91</color>
+    <!--<color name="colorPrimary">#1787AA</color>-->
+    <!--<color name="colorPrimaryDark">#096b91</color>-->
+    <color name="colorPrimary">#FF33B0FF</color>
+    <color name="colorPrimaryDark">#FF288bc9</color>
     <color name="colorAccent">#ffb74d</color>
 
 
@@ -11,7 +13,7 @@
     <color name="darkWhite">#ffcfcfcf</color>
 
     <color name="bookItem_title">@color/white</color>
-    <color name="bookItem_price">@color/white</color>
+    <color name="bookItem_price">@color/colorPrimary</color>
     <!--<color name="bookItem_price">#28282d</color>-->
     <color name="bookItem_text_background">#aa1787AA</color>
 </resources>
