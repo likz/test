@@ -47,6 +47,9 @@ android {
 //    testOptions {
 //        unitTests.returnDefaultValues = true
 //    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+    }
 }
 
 dependencies {
@@ -70,10 +73,13 @@ dependencies {
     androidTestCompile "com.android.support.test:rules:$rootProject.ext.rulesVersion"
 
     // Espresso UI Testing dependencies.
-    androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
-    androidTestCompile "com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoVersion"
     androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.ext.espressoVersion"
-
+    androidTestCompile ("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"){
+        exclude group: 'com.google.guava'
+    }
+    androidTestCompile ("com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoVersion"){
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
     // Square's Spoon dependencies
     androidTestCompile 'com.squareup.spoon:spoon-client:1.1.10'
 
@@ -88,6 +94,12 @@ configurations.all {
     resolutionStrategy.force "com.android.support:support-annotations:$rootProject.supportLibraryVersion"
 }
 
+configurations {
+    androidTestCompile.exclude group: 'com.android.support', module: 'support-v4'
+    androidTestCompile.exclude group: 'com.android.support', module: 'recyclerview-v7'
+}
+
 spoon {
     debug = true
+    adbTimeout = 60 // 60 seconds
 }
