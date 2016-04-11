@@ -102,4 +102,8 @@ configurations {
 spoon {
     debug = true
     adbTimeout = 60 // 60 seconds
+
+    className = 'com.trantuandung.technictest.ActivityTest'
+
+    methodName = 'testAddBookToCart'
 }
